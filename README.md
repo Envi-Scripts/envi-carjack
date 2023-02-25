@@ -1,5 +1,8 @@
 # envi-carjack
 
+PREVIEW:
+https://youtu.be/Bavm7xvbwRw
+
 Thank you for your support.
 
 Envi-Carjack is a simple FiveM resource designed to allow the player to remove a player/NPC from the driver's seat of a vehicle that fully utilises the native GTA function and includes animations and synced window smash.
