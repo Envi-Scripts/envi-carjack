@@ -3,13 +3,11 @@ ESX = exports['es_extended']:getSharedObject()
 Carjack = function()
     local ped = PlayerPedId()
     local playerPos = GetEntityCoords(ped)
-   -- local closestVehicle, closestDistance = ESX.Game.GetClosestVehicle(playerPos)
     local closestPed, closestPedDist = ESX.Game.GetClosestPed(playerPos, nil)
     if closestPed ~= ped and closestPedDist < 2 then
         print(closestPed, closestPedDist)
         local vehicle = GetVehiclePedIsIn(closestPed, false)
         if vehicle ~= 0 then
-            print('veh found')
             if not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') then
                 RequestAnimDict('veh@break_in@0h@p_m_zero@')
                 while not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') do 
