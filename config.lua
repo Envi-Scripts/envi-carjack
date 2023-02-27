@@ -6,3 +6,5 @@ Config.TakeVehWeapons = {
 }
 
 Config.Target = 'ox_target' -- 'qtarget' or 'ox_target' or false --( /carjack command )
+
+Config.AlwaysUnlock = true
