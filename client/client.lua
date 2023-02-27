@@ -5,7 +5,6 @@ Carjack = function()
     local playerPos = GetEntityCoords(ped)
     local closestPed, closestPedDist = ESX.Game.GetClosestPed(playerPos, nil)
     if closestPed ~= ped and closestPedDist < 2 then
-        print(closestPed, closestPedDist)
         local vehicle = GetVehiclePedIsIn(closestPed, false)
         if vehicle ~= 0 then
             if not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') then
@@ -13,6 +12,11 @@ Carjack = function()
                 while not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') do 
                     Wait(0)
                 end
+            end
+            if Config.AlwaysUnlock then
+                local plate = GetVehicleNumberPlateText(vehicle)
+                SetVehicleDoorsLocked(vehicle, 0)
+                Unlock(vehicle, plate)
             end
             TaskPlayAnim(ped, "veh@break_in@0h@p_m_zero@" ,"std_force_entry_ds" ,8.0, -8.0, -1, 48, 0, false, false, false )            Wait(1000)
             SetRelationshipBetweenGroups(5, `PLAYER`, `PLAYER`)
@@ -24,6 +28,12 @@ Carjack = function()
             RemoveAnimDict('veh@break_in@0h@p_m_zero@')
         end
     end
+end
+
+Unlock = function(vehicle, plate)
+-- add your vehicle keys logic/triggers here
+    print(vehicle)
+    print(plate)
 end
 
 RegisterNetEvent('envi-carjack:smash',function(netID)
@@ -40,6 +50,7 @@ if Config.Target == 'qtarget' then
             {
                 icon = 'fa-solid fa-car-side',
                 label = 'Commandeer Vehicle',
+                distance = 1.5,
                 canInteract =     function()
                    return Config.TakeVehWeapons[GetSelectedPedWeapon(PlayerPedId())] ~= nil
                 end,
@@ -56,7 +67,7 @@ elseif Config.Target == 'ox_target' then
             name = 'ox_target:carsteal',
             icon = 'fa-solid fa-car-side',
             label = ('Commandeer Vehicle'),
-            distance = 1,
+            distance = 1.5,
             bones = { 'door_dside_f', 'seat_dside_f' },
             canInteract =     function()
                 return Config.TakeVehWeapons[GetSelectedPedWeapon(PlayerPedId())] ~= nil
