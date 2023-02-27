@@ -18,13 +18,16 @@ Carjack = function()
                 SetVehicleDoorsLocked(vehicle, 0)
                 Unlock(vehicle, plate)
             end
-            TaskPlayAnim(ped, "veh@break_in@0h@p_m_zero@" ,"std_force_entry_ds" ,8.0, -8.0, -1, 48, 0, false, false, false )            Wait(1000)
+            TaskPlayAnim(ped, "veh@break_in@0h@p_m_zero@" ,"std_force_entry_ds" ,8.0, -8.0, -1, 48, 0, false, false, false )
+            Wait(1000)
+            TriggerServerEvent('envi-carjack:smash', NetworkGetNetworkIdFromEntity(vehicle))            
+            Wait(1000)
             SetRelationshipBetweenGroups(5, `PLAYER`, `PLAYER`)
             SetPedCanBeDraggedOut(closestPed, true)
-            TriggerServerEvent('envi-carjack:smash', NetworkGetNetworkIdFromEntity(vehicle))
             TaskEnterVehicle(ped, vehicle, -1, 0, 1.0, 524288, 0)
             Wait(5000)
             SetPedCanBeDraggedOut(closestPed, false)
+            SetRelationshipBetweenGroups(0, `PLAYER`, `PLAYER`)
             RemoveAnimDict('veh@break_in@0h@p_m_zero@')
         end
     end
@@ -32,8 +35,6 @@ end
 
 Unlock = function(vehicle, plate)
 -- add your vehicle keys logic/triggers here
-    print(vehicle)
-    print(plate)
 end
 
 RegisterNetEvent('envi-carjack:smash',function(netID)
