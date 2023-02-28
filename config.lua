@@ -1,10 +1,12 @@
 Config = {}
 
+Config.Framework = 'esx' -- 'esx' or 'qbcore'
+
 Config.TakeVehWeapons = {
     [`WEAPON_NIGHTSTICK`] = true, -- add/change weapons here
 
 }
 
-Config.Target = 'ox_target' -- 'qtarget' or 'ox_target' or false --( /carjack command )
+Config.Target = 'ox_target' -- 'ox_target', 'qtarget', 'qb-target' or false --( /carjack command )
 
-Config.AlwaysUnlock = true
+Config.AlwaysUnlock = true -- always unlock vehicle? (add your vehicle keys triggers in client.lua)
