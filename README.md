@@ -11,6 +11,6 @@ The player must be weilding the Nightstick Weapon. (You can add/ change weapons 
 
 Compatible with qtarget, ox_target and can also be used without any taget system. 
 
-Currently supports ESX but will convert to QB soon if there's enough interest!
+Currently supports ESX/QB-Core
 
 Big shout-out to the mentor SloppyShovel!
