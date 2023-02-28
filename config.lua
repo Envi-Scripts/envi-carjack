@@ -1,6 +1,6 @@
 Config = {}
 
-Config.Framework = 'esx' -- 'esx' or 'qbcore'
+Config.Framework = 'esx' -- 'esx' or 'qb'
 
 Config.TakeVehWeapons = {
     [`WEAPON_NIGHTSTICK`] = true, -- add/change weapons here
