@@ -8,7 +8,6 @@ if Config.Framework == 'esx' then
         if closestPed ~= ped and closestPedDist < 2 then
             local vehicle = GetVehiclePedIsIn(closestPed, false)
             local relationship = GetPedRelationshipGroupHash(closestPed)
-            print(relationship)
             if vehicle ~= 0 then
                 if not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') then
                     RequestAnimDict('veh@break_in@0h@p_m_zero@')
@@ -40,13 +39,11 @@ if Config.Framework == 'esx' then
 elseif Config.Framework == 'qb' then
     local QBCore = exports['qb-core']:GetCoreObject()
     Carjack = function()
-        print('triggering the function')
         local ped = PlayerPedId()
         local playerPos = GetEntityCoords(ped)
         local closestPed, closestPedDist = QBCore.Functions.GetClosestPed(playerPos, { ped })
         if closestPedDist < 2 then
             local vehicle = GetVehiclePedIsIn(closestPed, false)
-            print(vehicle)
             local relationship = GetPedRelationshipGroupHash(closestPed)
             if vehicle ~= 0 then
                 if not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') then
