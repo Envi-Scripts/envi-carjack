@@ -40,11 +40,13 @@ if Config.Framework == 'esx' then
 elseif Config.Framework == 'qb' then
     local QBCore = exports['qb-core']:GetCoreObject()
     Carjack = function()
+        print('triggering the function')
         local ped = PlayerPedId()
         local playerPos = GetEntityCoords(ped)
-        local closestPed, closestPedDist = QBCore.Functions.GetClosestPed(playerPos, nil)
-        if closestPed ~= ped and closestPedDist < 2 then
+        local closestPed, closestPedDist = QBCore.Functions.GetClosestPed(playerPos, { ped })
+        if closestPedDist < 2 then
             local vehicle = GetVehiclePedIsIn(closestPed, false)
+            print(vehicle)
             local relationship = GetPedRelationshipGroupHash(closestPed)
             if vehicle ~= 0 then
                 if not HasAnimDictLoaded('veh@break_in@0h@p_m_zero@') then
@@ -88,15 +90,13 @@ RegisterNetEvent('envi-carjack:smash',function(netID)
     end
 end)
 
-if Config.Target == 'qtarget' then
-
-    local door = {'door_dside_f', 'seat_dside_f' },
+local door = {'door_dside_f', 'seat_dside_f'}
     exports['qtarget']:AddTargetBone(door, {
         options = {
             {
                 icon = 'fa-solid fa-car-side',
                 label = 'Commandeer Vehicle',
-                distance = 1.5,
+                
                 canInteract =     function()
                    return Config.TakeVehWeapons[GetSelectedPedWeapon(PlayerPedId())] ~= nil
                 end,
@@ -105,6 +105,7 @@ if Config.Target == 'qtarget' then
                 end
             },
         },
+        distance = 1.5,
     })
 
 elseif Config.Target == 'ox_target' then
@@ -126,21 +127,21 @@ elseif Config.Target == 'ox_target' then
 
 elseif Config.Target == 'qb-target' then
 
-    local door = {'door_dside_f', 'seat_dside_f' },
+    local door = {'door_dside_f', 'seat_dside_f'}
     exports['qb-target']:AddTargetBone(door, {
         options = {
             {
                 icon = 'fa-solid fa-car-side',
                 label = 'Commandeer Vehicle',
-                distance = 1.5,
-                canInteract =     function()
+                canInteract = function()
                     return Config.TakeVehWeapons[GetSelectedPedWeapon(PlayerPedId())] ~= nil
                 end,
                 action = function()
                     Carjack()
-                end
+                end,
             },
         },
+        distance = 1.5,
     })
 
 else
