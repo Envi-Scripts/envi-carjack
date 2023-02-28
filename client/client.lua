@@ -89,8 +89,8 @@ RegisterNetEvent('envi-carjack:smash',function(netID)
         SmashVehicleWindow(NetworkGetEntityFromNetworkId(netID),0)
     end
 end)
-
-local door = {'door_dside_f', 'seat_dside_f'}
+if Config.Target == 'qtarget' then
+    local door = {'door_dside_f', 'seat_dside_f'}
     exports['qtarget']:AddTargetBone(door, {
         options = {
             {
