@@ -15,6 +15,11 @@ if Config.Framework == 'esx' then
                         Wait(0)
                     end
                 end
+                if Config.AlwaysUnlock then
+                    local plate = GetVehicleNumberPlateText(vehicle)
+                    SetVehicleDoorsLocked(vehicle, 0)
+                    Unlock(vehicle, plate)
+                end
                 if Config.FreezeVehicle then
                     FreezeEntityPosition(vehicle, true)
                 end
