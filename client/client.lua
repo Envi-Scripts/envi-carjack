@@ -20,6 +20,7 @@ if Config.Framework == 'esx' then
                     SetVehicleDoorsLocked(vehicle, 0)
                     Unlock(vehicle, plate)
                 end
+                FreezeEntityPosition(vehicle, true)
                 TaskPlayAnim(ped, "veh@break_in@0h@p_m_zero@" ,"std_force_entry_ds" ,8.0, -8.0, -1, 48, 0, false, false, false )
                 Wait(1000)
                 TriggerServerEvent('envi-carjack:smash', NetworkGetNetworkIdFromEntity(vehicle))            
@@ -33,6 +34,7 @@ if Config.Framework == 'esx' then
                     SetPedRelationshipGroupHash(closestPed, relationship)
                 end
                 RemoveAnimDict('veh@break_in@0h@p_m_zero@')
+                FreezeEntityPosition(vehicle, false)
             end
         end
     end
@@ -57,6 +59,7 @@ elseif Config.Framework == 'qb' then
                     SetVehicleDoorsLocked(vehicle, 0)
                     Unlock(vehicle, plate)
                 end
+                FreezeEntityPosition(vehicle, true)
                 TaskPlayAnim(ped, "veh@break_in@0h@p_m_zero@" ,"std_force_entry_ds" ,8.0, -8.0, -1, 48, 0, false, false, false )
                 Wait(1000)
                 TriggerServerEvent('envi-carjack:smash', NetworkGetNetworkIdFromEntity(vehicle))            
@@ -70,6 +73,7 @@ elseif Config.Framework == 'qb' then
                     SetPedRelationshipGroupHash(closestPed, relationship)
                 end
                 RemoveAnimDict('veh@break_in@0h@p_m_zero@')
+                FreezeEntityPosition(vehicle, false)
             end
         end
     end
