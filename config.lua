@@ -10,3 +10,5 @@ Config.TakeVehWeapons = {
 Config.Target = 'ox_target' -- 'ox_target', 'qtarget', 'qb-target' or false --( /carjack command )
 
 Config.AlwaysUnlock = true -- always unlock vehicle? (add your vehicle keys triggers in client.lua)
+
+Config.FreezeVehicle = false -- freeze the vehcile in place when triggered?
