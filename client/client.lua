@@ -87,10 +87,8 @@ elseif Config.Framework == 'qb' then
     end
 end
 
-Unlock = function(vehicle, plate)
--- add your vehicle keys logic/triggers here
-    -- TriggerServerEvent('qb-vehiclekeys:server:setVehLockState', NetworkGetNetworkIdFromEntity(vehicle), 1) -- uncomment if using QB
-    --TriggerServerEvent('shorty_slocks:breakIn', plate)
+Unlock = function(vehicle, plate)  
+    SetVehicleDoorsLocked(vehicle, 1)
 end
 
 RegisterNetEvent('envi-carjack:smash',function(netID)
